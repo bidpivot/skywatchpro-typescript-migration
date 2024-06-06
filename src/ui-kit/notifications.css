@@ -1,0 +1,25 @@
+.notifications {
+    padding-left: 0;
+    background-color: rgba(161 161 161 / 10%);
+    border-radius: 4px;
+}
+
+.notification {
+    display:  flex;
+    align-items: center;
+    gap: 10px; /* for when the text is too long */
+    border-bottom: 1px solid #ececec;
+    padding: 15px 20px;
+}
+
+.notification:last-child {
+    border-bottom: 0;
+}
+
+.notification-text {
+    flex: 1;
+    font-size: 14px;
+    margin: 0;
+    color: #444;
+}
+

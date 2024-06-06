@@ -1,0 +1,21 @@
+.container-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10vh;
+}
+
+.header-results .title {
+  /* position: sticky;
+  top: 10px; */
+  text-align: center;
+}
+
+#results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 1.5rem; */
+  overflow-y: auto;
+  max-height: 75vh;
+}

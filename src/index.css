@@ -1,0 +1,19 @@
+
+/* @import url("pages/onboarding.css") layer(page);
+@import url("pages/signin.css") layer(page);
+@import url("pages/profile.css") layer(page); */
+
+.map-container {
+  height: 400px;
+}
+
+.custom-marker {
+  background-image: url("./assets/react.svg");
+}
+
+#root {
+  background-image: url('./assets/background.jpg');
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}

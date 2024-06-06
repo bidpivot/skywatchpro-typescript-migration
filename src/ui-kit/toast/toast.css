@@ -1,0 +1,55 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui;
+    margin: 10px;
+    background-color: #ececec;
+}
+
+.toast {
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #CCCDCE;
+    box-shadow: 2px 3px 6px rgba(0 0 0 / 15%);
+}
+
+.toast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    color: #6c757d;
+    border-bottom: 1px solid rgba(0 0 0 / 5%);
+}
+
+.toast-header-title {
+    margin: 0;
+    font-weight: bold;
+}
+
+.toast-header-action {
+    margin: 0;
+    font-size: 12px;
+}
+
+.toast-header-container-left {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.toast-body {
+    margin: 0;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.toast-header-icon {
+  background-color: #3478F6;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}

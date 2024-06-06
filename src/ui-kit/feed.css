@@ -1,0 +1,38 @@
+.feeds {
+    padding-left: 0;
+}
+
+.feed {
+    display: flex;
+    align-items: flex-start; /* optional */
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ececec
+}
+
+.feed:last-child {
+  border-bottom: 0;
+}
+
+.feed-content {
+    flex: 1;
+    font-size: 14px;
+}
+
+.feed-content-name {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.feed-content-activity {
+  margin: 0;
+  padding-top: 8px;
+  color: #666;
+}
+.feed time {
+  color: #666;
+  font-size: 14px;
+}
+

@@ -1,0 +1,20 @@
+/* Default styles for map container */
+.map-container-wrapper {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.map-error-message {
+}
+
+.map-container {
+  position: absolute;
+}
+
+/* Media query for small screens (adjust as needed) */
+@media screen and (max-width: 27.5rem) {
+  .map-container-wrapper {
+    height: 50vh; /* Adjust the height as needed */
+  }
+}

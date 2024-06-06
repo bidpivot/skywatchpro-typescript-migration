@@ -1,0 +1,29 @@
+#header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  background-color: blue;
+  margin-inline: auto;
+  padding-inline: 5vw;
+}
+
+#header .back {
+  background-image: url("/assets/back.svg");
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 30px;
+  position: absolute;
+  left: 0;
+}
+
+#header .page-title {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 500;
+}
+
+#main-with-small-header {
+  padding-top: 20px;
+}

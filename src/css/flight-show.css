@@ -1,0 +1,73 @@
+.status-heading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--light-border-color);
+}
+
+.container-status-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid var(--light-border-color);
+}
+
+.container-flight-details {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.container-airline {
+  display: flex;
+  justify-content: center;
+}
+
+.container-progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.status-banner {
+  display: flex;
+  justify-content: center;
+}
+
+.status-destination {
+  flex: 1;
+  padding-left: 0.5rem;
+}
+
+.status-origin {
+  flex: 1;
+  padding-left: 0.5rem;
+}
+
+progress {
+  /* background-color: red; */
+  height: 0.5rem;
+  position: relative;
+}
+/* 
+progress[value]::after {
+  content: "";
+  width: 0.75rem;
+  height: 0.75rem;
+  position: fixed;
+  border-radius: 100%;
+  background-color: red;
+} */
+
+.flight-status-list * {
+  color: white;
+}
+
+@media (max-width: 37.5rem) {
+  .container-flight-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

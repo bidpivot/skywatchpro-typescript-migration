@@ -1,0 +1,59 @@
+:root {
+  --primary-color: #36d399;
+  --light-text-color: #545f7a;
+  --dark-color: #1e293b;
+  --light-surface-color: #f2f2f2;
+  --light-border-color: #dae1f2;
+  --green-background: #36d399;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  /* font-family: system-ui; */
+  margin: 0;
+}
+
+input,
+textarea,
+button,
+select {
+  font: inherit;
+}
+
+input,
+textarea,
+select {
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  background-color: var(--light-surface-color);
+  font-size: 1.1rem;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  /* border: 2px solid var(--primary-color); */
+  outline: 2px solid var(--primary-color);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  /* border: 4px solid var(--primary-color); */
+  outline: 4px solid var(--primary-color);
+}
+
+/* it's important that this is in the base layer because of all: unset */
+.ax-button {
+  all: unset;
+  outline: revert;
+  box-sizing: border-box;
+}
+
+p {
+  color: var(--dark-color);
+}
