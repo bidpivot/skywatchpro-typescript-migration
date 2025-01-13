@@ -1,16 +1,17 @@
-import React from 'react';
+import React from "react";
 import dateConverter from "./helpers/dateConverter";
 import { Link } from "react-router-dom";
-import {Flight} from "./interfaces/Flight"
+import { Flight } from "./interfaces/Flight";
+import FlightData from "./interfaces/FlightData";
 
-interface FlightMeta {
-  flight: Flight;
-  id: string;
-  status: string;
+interface CardResultProps {
+  flight: FlightData;
 }
 
-export default function CardResult({flight, id, status}: FlightMeta) {
+export default function CardResult({ flight }: CardResultProps) {
   // const { flight, id, reg, status } = props;
+  const id = flight.identification.id;
+  const status = flight.status.text;
 
   return (
     <div className="card-container py-[2px] p-2">
@@ -32,7 +33,7 @@ export default function CardResult({flight, id, status}: FlightMeta) {
           Get Flight Details
           </Link>
         </div> */}
-        </div>
+      </div>
     </div>
   );
 }

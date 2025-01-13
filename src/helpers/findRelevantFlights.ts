@@ -1,6 +1,8 @@
+import FlightData from "@/interfaces/FlightData";
 import timeConverter from "./timeConverter";
 import dateConverter from "./dateConverter";
-export default function findRelevantFlights(resultsArray) {
+
+export default function findRelevantFlights(resultsArray: Array<FlightData>) {
   console.log(
     `response JSON contains ${resultsArray.length} items in the flights array`
   );

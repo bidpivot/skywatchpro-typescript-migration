@@ -8,21 +8,26 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function FlightShow(props) {
   const params = useParams();
-  const flightId = params.id
-  const baseUrl = props.url;
+  const flightId = params.id;
+  const baseurl = import.meta.env.VITE_REACT_APP_RAPIDAPI_URL as string;
   const apiKey = import.meta.env.VITE_REACT_APP_RAPIDAPI_KEY;
 
-  const {data: flight, error, isLoading, isError } = useQuery({
+  const {
+    data: flight,
+    error,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["detail", flightId],
-    queryFn: () => getFlightDetails({id: flightId, url: baseUrl}),
+    queryFn: () => getFlightDetails({ id: flightId, url: baseurl }),
     refetchOnMount: false,
-    refetchOnWindowFocus: false
-  })
+    refetchOnWindowFocus: false,
+  });
 
   useEffect(() => console.log({ flight }), [flight]);
 
-  async function getFlightDetails({id, url}) {
-    console.log(`FETCH: for flightid:${id}`)
+  async function getFlightDetails({ id, url }) {
+    console.log(`FETCH: for flightid:${id}`);
     const options = {
       method: "GET",
       headers: {
@@ -32,10 +37,13 @@ export default function FlightShow(props) {
     };
 
     try {
-    const response = await fetch(`${url}/flights/detail?flight=${id}`, options)
-    return response.json()
+      const response = await fetch(
+        `${url}/flights/detail?flight=${id}`,
+        options
+      );
+      return response.json();
     } catch (error) {
-      return error
+      return error;
     }
   }
 
@@ -48,8 +56,8 @@ export default function FlightShow(props) {
       )}
       <div className="p-2">
         <div className="bg-black/20 shadow-lg shadow-black/50 backdrop-blur-md h-full rounded-sm">
-        {isLoading && <Loader />}
-        {flight && <FlightStatusTable flight={flight} />}
+          {isLoading && <Loader />}
+          {flight && <FlightStatusTable flight={flight} />}
         </div>
       </div>
       <div
