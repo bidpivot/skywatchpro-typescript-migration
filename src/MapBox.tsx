@@ -1,23 +1,34 @@
 import { useEffect, useState, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import react from "./assets/react.svg";
+import FlightData from "./interfaces/FlightData";
+interface FlightStatusTableProps {
+  flight: FlightData;
+}
 
-export default function MapBox(props) {
-  const flight = props.flight;
+export default function MapBox({ flight }: FlightStatusTableProps) {
   console.log({ flight });
 
   const apiKey = import.meta.env.VITE_REACT_APP_MAPBOX_KEY;
   mapboxgl.accessToken = apiKey;
 
-  const mapContainer = useRef(null);
-  const map = useRef(null);
-  const markerContainer = useRef(null); // Create a marker container
+  const mapContainer = useRef<HTMLDivElement | null>(null);
+  const map = useRef<mapboxgl.Map | null>(null);
+  const markerContainer = useRef<HTMLDivElement | null>(null); // Create a marker container
   const [lng, setLng] = useState(flight.airport.destination.position.longitude);
   const [lat, setLat] = useState(flight.airport.destination.position.latitude);
   const [zoom, setZoom] = useState(9);
 
   useEffect(() => {
-    if (map.current) return; // initialize map only once
+    // Check if the map container element is available
+    if (!mapContainer.current) return;
+
+    // Check if the map has already been initialized return if so
+    // to make sure you only intialize the map object once
+    if (map.current) return;
+
+    // Initialize the Mapbox map then proceed with all the customizations of the map using Class methods
+    if (map.current) return;
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/dark-v11",
@@ -48,8 +59,10 @@ export default function MapBox(props) {
 
   useEffect(() => {
     // Resize the map when the container size changes
+    if (!map.current) return;
+
     const resizeMap = () => {
-      map.current.resize();
+      map.current!.resize();
     };
 
     window.addEventListener("resize", resizeMap);

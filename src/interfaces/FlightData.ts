@@ -1,3 +1,5 @@
+// this is the interface for
+
 interface FlightData {
   identification: {
     id: number | null;
@@ -79,7 +81,7 @@ interface FlightData {
       };
       visible: boolean;
     };
-    destination: string | null;
+    destination: Destination;
     real: string | null;
   };
   time: {
@@ -101,6 +103,34 @@ interface FlightData {
       duration: number | null;
     };
   };
+}
+
+interface Destination {
+  name: string;
+  code: {
+    iata: string;
+    icao: string;
+  };
+  position: {
+    latitude: number;
+    longitude: number;
+    country: {
+      name: string;
+      code: string;
+      id: number;
+    };
+    region: {
+      city: string;
+    };
+  };
+  timezone: {
+    name: string;
+    offset: number;
+    abbr: string;
+    abbrName: string | null;
+    isDst: boolean;
+  };
+  visible: boolean;
 }
 
 export default FlightData;

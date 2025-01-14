@@ -1,21 +1,17 @@
-import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { AirlineInput } from "./AirlineInput";
 
-interface SearchFormProps {
-  className?: string;
-}
-
-function SearchForm({ className }: SearchFormProps): JSX.Element {
-  const [airline, setAirline] = useState<string>("");
-  const [flightNumber, setFlightNumber] = useState<string>("");
+export default function SearchForm({ className }) {
+  const [airline, setAirline] = useState("");
+  const [flightNumber, setFlightNumber] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     console.log({ airline });
   }, [airline]);
 
-  function handleFormSubmit(event: FormEvent<HTMLFormElement>): void {
+  function handleFormSubmit(event) {
     event.preventDefault();
     if (!airline) {
       alert("Please select an Airline.");
@@ -23,13 +19,9 @@ function SearchForm({ className }: SearchFormProps): JSX.Element {
     }
     navigate(`/results/${airline}${flightNumber}`);
   }
-
-  function handleFlightNumberChange(e: ChangeEvent<HTMLInputElement>): void {
-    setFlightNumber(e.target.value);
-  }
-
   return (
     <div
+      // id="form-container"
       className={
         "bg-black/30 rounded-sm text-center text-white backdrop-blur-lg p-4 " +
         className
@@ -44,16 +36,27 @@ function SearchForm({ className }: SearchFormProps): JSX.Element {
         </h2>
         <div className="input-container">
           <div className="form-line">
-            {/* <AirlineSelection /> */}
-            <label htmlFor="flightNumber">
-              Flight Number:
+            {/* {
+                                <AirlineSelection
+                                    value={airline}
+                                    setAirline={setAirline}
+                                />
+                            } */}
+            <AirlineInput setValue={setAirline} value={airline} />
+          </div>
+          <div className="form-line">
+            <label
+              htmlFor="flightNumber"
+              aria-describedby="input flight number"
+            >
               <input
+                className="bg-transparent border-b text-white border-b-white rounded-none placeholder:text-white/70"
                 type="text"
                 id="flightNumber"
                 value={flightNumber}
                 placeholder="Flight Number"
                 required
-                onChange={handleFlightNumberChange}
+                onChange={e => setFlightNumber(e.target.value)}
               />
             </label>
           </div>
@@ -72,5 +75,3 @@ function SearchForm({ className }: SearchFormProps): JSX.Element {
     </div>
   );
 }
-
-export default SearchForm;

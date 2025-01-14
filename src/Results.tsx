@@ -72,7 +72,7 @@ function Results(): JSX.Element {
       ) : (
         <p>No results found.</p>
       )}
-      <MapBox />
+      <MapBox flight={searchResults[0]} />
     </div>
   );
 }

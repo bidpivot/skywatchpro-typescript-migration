@@ -1,5 +1,4 @@
-// flight.airport.destination.position.longitude,
-
+// This is the interface for
 export interface Flight {
   identification: Identification;
   status: Status;
