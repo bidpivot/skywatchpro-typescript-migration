@@ -5,45 +5,45 @@ import FlightMap from "./FlightMap";
 import Loader from "./helpers/Loader";
 import dataJson from "./json/flight-detail-response.json";
 import { useQuery } from "@tanstack/react-query";
+import { Flight } from "./interfaces/Flight";
 
-export default function FlightShow(props) {
+export default function FlightShow() {
   const params = useParams();
   const flightId = params.id;
   const baseurl = import.meta.env.VITE_REACT_APP_RAPIDAPI_URL as string;
-  const apiKey = import.meta.env.VITE_REACT_APP_RAPIDAPI_KEY;
+  const apiKey = import.meta.env.VITE_REACT_APP_RAPIDAPI_KEY as string;
 
   const {
     data: flight,
     error,
     isLoading,
     isError,
-  } = useQuery({
+  } = useQuery<Flight, Error>({
     queryKey: ["detail", flightId],
-    queryFn: () => getFlightDetails({ id: flightId, url: baseurl }),
+    queryFn: () => getFlightDetails(),
     refetchOnMount: false,
     refetchOnWindowFocus: false,
   });
 
   useEffect(() => console.log({ flight }), [flight]);
 
-  async function getFlightDetails({ id, url }) {
-    console.log(`FETCH: for flightid:${id}`);
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": apiKey,
-        "X-RapidAPI-Host": "flight-radar1.p.rapidapi.com",
-      },
-    };
-
+  async function getFlightDetails(): Promise<Flight> {
     try {
-      const response = await fetch(
-        `${url}/flights/detail?flight=${id}`,
-        options
-      );
-      return response.json();
+      console.log(`FETCH: for flightid:${flightId}`);
+      const response = await fetch(`${baseurl}/flights/${flightId}`, {
+        headers: {
+          "X-RapidAPI-Key": apiKey,
+          "X-RapidAPI-Host": "flight-radar1.p.rapidapi.com",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data: Flight = await response.json();
+      return data;
     } catch (error) {
-      return error;
+      console.error("Failed to fetch flight details:", error);
+      throw error;
     }
   }
 

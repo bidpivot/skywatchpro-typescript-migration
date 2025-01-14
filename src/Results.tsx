@@ -10,6 +10,9 @@ import FlightData from "./interfaces/FlightData";
 
 interface Params {
   flightId: string;
+  // the flightId is a concatenation of the airline + flight number in the params
+  // it's generated from this navigation:  `/results/${airline}${flightNumber}`
+  [key: string]: string | undefined;
 }
 
 function Results(): JSX.Element {

@@ -1,23 +1,29 @@
 import { useEffect, useState, useRef } from "react";
 import mapboxgl from "mapbox-gl";
+import { Flight } from "./interfaces/Flight";
+import { Feature, LineString } from "geojson";
 
-export default function FlightMap(props) {
-  const flight = props.flight;
+interface FlightStatusTableProps {
+  flight: Flight;
+}
+
+export default function FlightMap({ flight }: FlightStatusTableProps) {
+  // const flight = props.flight;
   const [lng, setLng] = useState(flight.trail[0].lng);
   const [lat, setLat] = useState(flight.trail[0].lat);
   const apiKey = import.meta.env.VITE_REACT_APP_MAPBOX_KEY;
   mapboxgl.accessToken = apiKey;
 
-  const mapContainer = useRef(null);
-  const map = useRef(null);
-  const markerContainer = useRef(null); // Create a marker container
+  const mapContainer = useRef<HTMLDivElement | null>(null);
+  const map = useRef<mapboxgl.Map | null>(null);
+  const markerContainer = useRef<HTMLDivElement | null>(null); // Create a marker container
 
   // Calculate the coordinates of the origin and destination
-  const originCoordinates = [
+  const originCoordinates: [number, number] = [
     flight.airport.origin.position.longitude,
     flight.airport.origin.position.latitude,
   ];
-  const destinationCoordinates = [
+  const destinationCoordinates: [number, number] = [
     flight.airport.destination.position.longitude,
     flight.airport.destination.position.latitude,
   ];
@@ -66,12 +72,13 @@ export default function FlightMap(props) {
         .addTo(map.current);
 
       // Create a GeoJSON LineString feature for the flight path
-      const flightPath = {
+      const flightPath: Feature<LineString> = {
         type: "Feature",
         geometry: {
           type: "LineString",
           coordinates: [originCoordinates, destinationCoordinates],
         },
+        properties: {},
       };
 
       // Add the flight path LineString feature to the map

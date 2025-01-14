@@ -1,10 +1,15 @@
 import { Plane } from "lucide-react";
 import FlightMap from "./FlightMap";
 import timeStampConvert from "./helpers/timeStampConvert";
+import { Flight } from "./interfaces/Flight";
 
-export default function FlightStatusTable(props) {
-  const { flight } = props;
-  console.log(flight);
+interface FlightStatusTableProps {
+  flight: Flight;
+}
+
+export default function FlightStatusTable({ flight }: FlightStatusTableProps) {
+  console.log("Here is the 'flight' object:\n", flight);
+  // const { flight } = props;
 
   return (
     <div className="flight-status-list flex flex-col gap-6 py-2">
@@ -12,7 +17,12 @@ export default function FlightStatusTable(props) {
         <p className="text-3xl font-black  flex items-center gap-4">
           {flight?.airport?.origin?.code?.iata ?? " "}
           {/* {" > "} */}
-          <Plane color="#ffffff" fill="white" strokeWidth={0.5} absoluteStrokeWidth />
+          <Plane
+            color="#ffffff"
+            fill="white"
+            strokeWidth={0.5}
+            absoluteStrokeWidth
+          />
           {flight?.airport?.destination?.code?.iata ?? " "}
         </p>
       </div>
@@ -25,9 +35,7 @@ export default function FlightStatusTable(props) {
       <div className="container-status-details ">
         <div>
           <p className=" font-bold text-xl">Flight:</p>
-          <p className="">
-            {flight?.identification?.number?.default ?? ""}
-          </p>
+          <p className="">{flight?.identification?.number?.default ?? ""}</p>
         </div>
         <div>
           <p className=" font-bold text-xl">Terminal:</p>
@@ -101,7 +109,7 @@ export default function FlightStatusTable(props) {
           <div>
             <p className="font-semibold pt-3">Actual Arrival:</p>
             <p>
-              {flight?.time?.real?.arrival === null
+              {flight?.time?.real?.arrival === null || undefined
                 ? "not yet available"
                 : timeStampConvert(flight?.time?.real?.arrival)}
             </p>
