@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import FlightStatusTable from "./FlightStatusTable";
 import FlightMap from "./FlightMap";
 import Loader from "./helpers/Loader";
-import dataJson from "./json/flight-detail-response.json";
 import { useQuery } from "@tanstack/react-query";
 import { Flight } from "./interfaces/Flight";
 
@@ -30,12 +29,15 @@ export default function FlightShow() {
   async function getFlightDetails(): Promise<Flight> {
     try {
       console.log(`FETCH: for flightid:${flightId}`);
-      const response = await fetch(`${baseurl}/flights/${flightId}`, {
-        headers: {
-          "X-RapidAPI-Key": apiKey,
-          "X-RapidAPI-Host": "flight-radar1.p.rapidapi.com",
-        },
-      });
+      const response = await fetch(
+        `${baseurl}/flights/detail?flight=${flightId}`,
+        {
+          headers: {
+            "X-RapidAPI-Key": apiKey,
+            "X-RapidAPI-Host": "flight-radar1.p.rapidapi.com",
+          },
+        }
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
