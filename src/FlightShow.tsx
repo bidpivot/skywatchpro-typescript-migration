@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FlightStatusTable from "./FlightStatusTable";
 import FlightMap from "./FlightMap";
-import Loader from "./helpers/Loader";
+import Loader from "./components/Loader";
 import { useQuery } from "@tanstack/react-query";
-import { Flight } from "./interfaces/Flight";
+import { Flight } from "./interfaces/FlightDetailData";
 
 export default function FlightShow() {
   const params = useParams();

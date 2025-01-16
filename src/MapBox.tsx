@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import react from "./assets/react.svg";
-import FlightData from "./interfaces/FlightData";
+import FlightData from "./interfaces/FlightCardData";
 interface FlightStatusTableProps {
   flight: FlightData;
 }

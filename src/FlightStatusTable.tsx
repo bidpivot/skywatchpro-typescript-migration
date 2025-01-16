@@ -1,7 +1,7 @@
 import { Plane } from "lucide-react";
 import FlightMap from "./FlightMap";
 import timeStampConvert from "./helpers/timeStampConvert";
-import { Flight } from "./interfaces/Flight";
+import { Flight } from "./interfaces/FlightDetailData";
 
 interface FlightStatusTableProps {
   flight: Flight;

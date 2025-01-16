@@ -1,4 +1,4 @@
-import FlightData from "@/interfaces/FlightData";
+import FlightData from "@/interfaces/FlightCardData";
 import timeConverter from "./timeConverter";
 import dateConverter from "./dateConverter";
 

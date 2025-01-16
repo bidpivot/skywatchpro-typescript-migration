@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import mapboxgl from "mapbox-gl";
-import { Flight } from "./interfaces/Flight";
+import { Flight } from "./interfaces/FlightDetailData";
 import { Feature, LineString } from "geojson";
 
 interface FlightStatusTableProps {

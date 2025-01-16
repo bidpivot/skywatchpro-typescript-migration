@@ -32,7 +32,7 @@ import "./css/mapbox-gl.css";
 import Results from "./Results";
 import Form from "./Form";
 import FlightShow from "./FlightShow";
-import Loader from "./helpers/Loader";
+import Loader from "./components/Loader";
 
 function App() {
   const navigate = useNavigate();

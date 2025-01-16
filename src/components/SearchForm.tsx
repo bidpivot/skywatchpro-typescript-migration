@@ -2,7 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AirlineInput } from "./AirlineInput";
 
-export default function SearchForm({ className }) {
+// Define the interface for the props
+interface SearchFormProps {
+  className?: string;
+}
+
+export default function SearchForm({ className }: SearchFormProps) {
   const [airline, setAirline] = useState("");
   const [flightNumber, setFlightNumber] = useState("");
   const navigate = useNavigate();
@@ -11,7 +16,7 @@ export default function SearchForm({ className }) {
     console.log({ airline });
   }, [airline]);
 
-  function handleFormSubmit(event) {
+  function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!airline) {
       alert("Please select an Airline.");

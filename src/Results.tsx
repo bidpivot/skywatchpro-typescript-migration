@@ -3,10 +3,10 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import CardResult from "./CardResult";
 import MapBox from "./MapBox";
-import Loader from "./helpers/Loader";
+import Loader from "./components/Loader";
 import fetchFlightResults from "./helpers/fetchFlightResults";
 import SearchForm from "./components/SearchForm";
-import FlightData from "./interfaces/FlightData";
+import FlightData from "./interfaces/FlightCardData";
 
 interface Params {
   flightId: string;
@@ -19,6 +19,8 @@ function Results(): JSX.Element {
   const params = useParams<Params>();
   const flightId = params.flightId;
   let page = "1";
+
+  console.log("Results component rendered:", { flightId, page });
 
   const {
     data: searchResults,
@@ -103,7 +105,10 @@ function Results(): JSX.Element {
               )}
             </div>
 
-            <div id="results" className="small-scrollbar mr-1 shadow-inner">
+            <div
+              id="results"
+              className="small-scrollbar mr-1 shadow-inner space-y-4"
+            >
               {searchResults.length !== 0 &&
                 searchResults.map((flight, index) => {
                   const id = flight.identification.id;
