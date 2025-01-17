@@ -4,7 +4,7 @@ This is a simple react frontend that uses a free api to find flight information 
 
 Tools used: React, React Query, MapBox API, FlightRadar1, Tailwind, Shadcn-ui
 
-demo is hosted here: [FILL IN DEPLOYED URL]
+demo is hosted here: [skywatchpro.site](skywatchpro.site)
 
 ### Component Hierarchy
 
