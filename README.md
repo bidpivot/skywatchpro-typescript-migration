@@ -2,9 +2,16 @@
 
 This is a simple react frontend that uses a free api to find flight information about flights.
 
-Tools used: React, React Query, MapBox API, FlightRadar1, Tailwind, Shadcn-ui
+Tools used: React, React Query, MapBox API, FlightRadar1, Tailwind, Shadcn-ui, Vite
 
 demo is hosted here: [skywatchpro.site](skywatchpro.site)
+
+### Setup
+
+- rename the `.env.example` file to `.env`
+- fill in your [mapbox](https://www.mapbox.com/) api key and [rapidUrl](https://rapidapi.com) key
+- `npm install`
+- before setting is live, it's recommended to test it with a mock postman server (instructions in .env.example)
 
 ### Component Hierarchy
 
